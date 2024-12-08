@@ -1,24 +1,19 @@
 <script setup lang="ts">
 import { useUserStore } from '@/pinia/userStore'
+import { isUserLoggedIn } from '@/router/utils'
 
 const router = useRouter()
 
-// const ability = useAppAbility()
+const isLoggedIn = ref(isUserLoggedIn())
+
+console.log('isLoggedIn', isLoggedIn.value)
+
 const userData = useUserStore.userInfo
 
 const logout = async () => {
   await useUserStore.logout()
 
-  // Redirect to login page
-  router.push('/login')
-    .then(() => {
-      // ℹ️ We had to remove abilities in then block because if we don't nav menu items mutation is visible while redirecting user to login page
-      // Remove "userAbilities" from localStorage
-      localStorage.removeItem('userAbilities')
-
-      // Reset ability to initial ability
-      // ability.update(initialAbility)
-    })
+  await router.push('/login')
 }
 </script>
 
@@ -48,7 +43,7 @@ const logout = async () => {
         location="bottom end"
         offset="14px"
       >
-        <VList>
+        <VList v-if="isLoggedIn">
           <!-- 👉 User Avatar & Name -->
           <VListItem>
             <template #prepend>
@@ -108,35 +103,8 @@ const logout = async () => {
               />
             </template>
 
-            <VListItemTitle>Settings</VListItemTitle>
+            <VListItemTitle>Cài đặt</VListItemTitle>
           </VListItem>
-
-          <!-- 👉 Pricing -->
-          <!--          <VListItem :to="{ name: 'pages-pricing' }"> -->
-          <!--            <template #prepend> -->
-          <!--              <VIcon -->
-          <!--                class="me-2" -->
-          <!--                icon="tabler-currency-dollar" -->
-          <!--                size="22" -->
-          <!--              /> -->
-          <!--            </template> -->
-
-          <!--            <VListItemTitle>Pricing</VListItemTitle> -->
-          <!--          </VListItem> -->
-
-          <!-- 👉 FAQ -->
-          <!--          <VListItem :to="{ name: 'pages-faq' }"> -->
-          <!--            <template #prepend> -->
-          <!--              <VIcon -->
-          <!--                class="me-2" -->
-          <!--                icon="tabler-help" -->
-          <!--                size="22" -->
-          <!--              /> -->
-          <!--            </template> -->
-
-          <!--            <VListItemTitle>FAQ</VListItemTitle> -->
-          <!--          </VListItem> -->
-
           <!-- Divider -->
           <VDivider class="my-2" />
 
@@ -154,6 +122,32 @@ const logout = async () => {
             </template>
 
             <VListItemTitle>Logout</VListItemTitle>
+          </VListItem>
+        </VList>
+
+        <VList v-else>
+          <VListItem :to="{ name: 'login' }">
+            <template #prepend>
+              <VIcon
+                class="me-2"
+                icon="tabler-login-2"
+                size="22"
+              />
+            </template>
+
+            <VListItemTitle>Đăng nhập</VListItemTitle>
+          </VListItem>
+
+          <VListItem :to="{ name: 'register' }">
+            <template #prepend>
+              <VIcon
+                class="me-2"
+                icon="tabler-restore"
+                size="22"
+              />
+            </template>
+
+            <VListItemTitle>Đăng ký</VListItemTitle>
           </VListItem>
         </VList>
       </VMenu>

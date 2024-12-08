@@ -20,19 +20,14 @@ const { appRouteTransition } = useThemeConfig()
         to="/"
         class="app-logo d-flex align-center gap-x-3"
       >
-        <div>NhaTroGiaRe</div>
-        <h1 class="app-title font-weight-bold leading-normal text-xl">
-          {{ themeConfig.app.title }}
-        </h1>
+        <h1>NhaTroGiaRe</h1>
       </RouterLink>
       <VSpacer />
 
-      <!--      <NavSearchBar trigger-btn-class="ms-lg-n3" /> -->
-
-      <!--      <NavBarI18n /> -->
-      <!--      <NavbarThemeSwitcher /> -->
-      <!--      <NavbarShortcuts /> -->
-      <!--      <NavBarNotifications class="me-2" /> -->
+      <RouterLink to="/" class="me-4">
+        <VIcon class="me-2" icon="tabler-heart" size="22" />
+        <span>Tin đã lưu</span>
+      </RouterLink>
       <UserProfile />
     </template>
 
@@ -53,8 +48,5 @@ const { appRouteTransition } = useThemeConfig()
     <template #footer>
       <Footer />
     </template>
-
-    <!-- 👉 Customizer -->
-    <TheCustomizer />
   </HorizontalNavLayout>
 </template>

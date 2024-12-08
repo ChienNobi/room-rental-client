@@ -81,9 +81,6 @@ const { _layoutClasses: layoutClasses, isNavbarBlurEnabled } = useLayouts()
   &.layout-nav-type-horizontal {
     display: flex;
     flex-direction: column;
-
-    // // TODO(v2): Check why we need height in vertical nav & min-height in horizontal nav
-    // min-height: 100%;
     min-block-size: calc(var(--vh, 1vh) * 100);
 
     .layout-navbar-and-nav-container {

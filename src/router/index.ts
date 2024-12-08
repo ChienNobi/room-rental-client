@@ -11,7 +11,7 @@ const router = createRouter({
     {
       path: '/',
       redirect: _ => {
-        return { name: 'post' }
+        return { name: 'home' }
       },
     },
     {
@@ -30,25 +30,27 @@ router.beforeEach(async (to, _, next) => {
   const isLoggedIn = isUserLoggedIn()
   const { useUserStore } = await import('@/pinia/userStore')
 
-  if (isLoggedIn) {
-    if (!useUserStore.userInfo.name) {
-      try {
-        const res = await profile()
-        if (res.status === HTTP_STATUS.OK)
-          useUserStore.setUserInfo(res.data.user)
-      }
-      catch (e) {
-        await useUserStore.logout()
-        next('/login')
+  next()
 
-        return
-      }
-    }
-    next()
-  }
-  else {
-    return WHITE_LIST_ROUTE.includes(to.name as string) ? next() : next('/login')
-  }
+  // if (isLoggedIn) {
+  //   if (!useUserStore.userInfo.name) {
+  //     try {
+  //       const res = await profile()
+  //       if (res.status === HTTP_STATUS.OK)
+  //         useUserStore.setUserInfo(res.data.user)
+  //     }
+  //     catch (e) {
+  //       await useUserStore.logout()
+  //       next('/login')
+  //
+  //       return
+  //     }
+  //   }
+  //   next()
+  // }
+  // else {
+  //   return WHITE_LIST_ROUTE.includes(to.name as string) ? next() : next('/login')
+  // }
 })
 
 export default router

@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-export const AUTH_TOKEN_KEY = 'PERSONAL_MANAGER_APP'
+export const AUTH_TOKEN_KEY = 'PERSONAL_MANAGER_APP_USER'
 export const TOKEN_TYPE = 'Bearer'
 
 export const getToken = () => {

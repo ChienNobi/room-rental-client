@@ -59,7 +59,7 @@ export const useLayouts = () => {
 
   const appContentLayoutNav = computed({
     get() {
-      return config.app.contentLayoutNav.value
+      return AppContentLayoutNav.Horizontal
     },
     set(val: typeof config.app.contentLayoutNav.value) {
       config.app.contentLayoutNav.value = val

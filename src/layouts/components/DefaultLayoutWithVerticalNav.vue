@@ -38,14 +38,10 @@ const { width: windowWidth } = useWindowSize()
           />
         </VBtn>
 
-        <!--        <NavSearchBar class="ms-lg-n3" /> -->
-
         <VSpacer />
 
         <NavBarI18n />
         <NavbarThemeSwitcher />
-        <!--        <NavbarShortcuts /> -->
-        <!--        <NavBarNotifications class="me-2" /> -->
         <UserProfile />
       </div>
     </template>
