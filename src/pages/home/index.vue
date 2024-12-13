@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { formatCurrency } from '../../@core/utils/formatters'
+import { formatCurrency } from '@core/utils/formatters'
 import { postApi } from '@/api/post.api'
 import { HTTP_STATUS } from '@/constants/common'
 
@@ -43,49 +43,6 @@ getListPost()
       </VCol>
     </VRow>
   </div>
-
-<!--  <p class="text-h5 pt-4">Cho Thuê phòng trọ</p> -->
-<!--  <VRow> -->
-<!--    <VCol cols="3" :xs="6"> -->
-<!--      <VCard> -->
-<!--        <VCardText> -->
-<!--          <img src="https://pt123.cdn.static123.com/images/thumbs/450x300/fit/2024/11/29/img-4082_1732875421.jpg"> -->
-<!--          <p class="line-clamp-2">Cho thuê biệt thự Phố Đông Village, Cát Lái, Q2</p> -->
-<!--          <p><span style="color: #068906;">9 triệu/tháng</span> 75 m2</p> -->
-<!--        </VCardText> -->
-<!--      </VCard> -->
-<!--    </VCol> -->
-
-<!--    <VCol cols="3" :xs="6"> -->
-<!--      <VCard> -->
-<!--        <VCardText> -->
-<!--          <img src="https://pt123.cdn.static123.com/images/thumbs/450x300/fit/2024/11/29/img-4082_1732875421.jpg"> -->
-<!--          <p class="line-clamp-2">Cho thuê biệt thự Phố Đông Village, Cát Lái, Q2</p> -->
-<!--          <p><span style="color: #068906;">9 triệu/tháng</span> 75 m2</p> -->
-<!--        </VCardText> -->
-<!--      </VCard> -->
-<!--    </VCol> -->
-
-<!--    <VCol cols="3"> -->
-<!--      <VCard> -->
-<!--        <VCardText> -->
-<!--          <img src="https://pt123.cdn.static123.com/images/thumbs/450x300/fit/2019/02/25/63b548ae81a263fc3ab3_1551067966.jpg"> -->
-<!--          <p class="line-clamp-2">Cho thuê biệt thự Phố Đông Village, Cát Lái, Q2</p> -->
-<!--          <p><span style="color: #068906;">9 triệu/tháng</span> 75 m2</p> -->
-<!--        </VCardText> -->
-<!--      </VCard> -->
-<!--    </VCol> -->
-
-<!--    <VCol cols="3"> -->
-<!--      <VCard> -->
-<!--        <VCardText> -->
-<!--          <img src="https://pt123.cdn.static123.com/images/thumbs/450x300/fit/2019/02/25/63b548ae81a263fc3ab3_1551067966.jpg"> -->
-<!--          <p class="line-clamp-2">Cho thuê biệt thự Phố Đông Village, Cát Lái, Q2</p> -->
-<!--          <p><span style="color: #068906;">9 triệu/tháng</span> 75 m2</p> -->
-<!--        </VCardText> -->
-<!--      </VCard> -->
-<!--    </VCol> -->
-<!--  </VRow> -->
 </template>
 
 <style lang="scss" scoped>

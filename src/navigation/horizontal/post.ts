@@ -1,18 +1,22 @@
 export default [
   {
     title: 'Phòng trọ',
-    to: 'dashboards-crm',
+    to: 'search',
   },
   {
     title: 'Nhà nguyên căn',
-    to: 'dashboards-crm',
+    to: 'search',
   },
   {
     title: 'Căn hộ chung cư',
-    to: 'dashboards-crm',
+    to: 'search',
   },
   {
     title: 'Văn phòng',
-    to: 'dashboards-crm',
+    to: 'search',
+  },
+  {
+    title: 'Tìm kiếm',
+    to: 'search',
   },
 ]

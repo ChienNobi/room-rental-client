@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { formatCurrency } from '../../@core/utils/formatters'
+import { formatCurrency } from '@core/utils/formatters'
 import { postApi } from '@/api/post.api'
 import { FURNITURE_TYPES, HTTP_STATUS } from '@/constants/common'
 
