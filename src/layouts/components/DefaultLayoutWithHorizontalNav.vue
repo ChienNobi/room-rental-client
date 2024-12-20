@@ -24,7 +24,7 @@ const { appRouteTransition } = useThemeConfig()
       </RouterLink>
       <VSpacer />
 
-      <RouterLink to="/" class="me-4">
+      <RouterLink to="/favorite" class="me-4">
         <VIcon class="me-2" icon="tabler-heart" size="22" />
         <span>Tin đã lưu</span>
       </RouterLink>

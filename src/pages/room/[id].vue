@@ -2,6 +2,8 @@
 import { formatCurrency } from '@core/utils/formatters'
 import { postApi } from '@/api/post.api'
 import { FURNITURE_TYPES, HTTP_STATUS } from '@/constants/common'
+import { isUserLoggedIn } from '@/router/utils'
+import { useSnackbar } from '@core/components/Snackbar/useSnackbar'
 
 const route = useRoute()
 const id = route.params.id as string
@@ -36,12 +38,27 @@ const post = reactive({
   contact_email: '',
 })
 
+const { successNotify, errorNotify } = useSnackbar()
+
 const getPostById = async () => {
   const result = await postApi.getById(id)
   if (result.status === HTTP_STATUS.OK) {
     result.data.furniture = FURNITURE_TYPES.find(item => item.value === result.data.furniture)?.title
     Object.assign(post, result.data)
     post.images = JSON.parse(result.data.images as string)
+  }
+}
+
+const saveFavorite = async () => {
+  if (!isUserLoggedIn()) {
+    errorNotify('Vui lòng đăng nhập để lưu tin')
+  }
+  else {
+    const result = await postApi.saveFavorite(id)
+    if (result.status === HTTP_STATUS.OK)
+      successNotify('Lưu tin thành công')
+    else
+      errorNotify('Lưu tin thất bại')
   }
 }
 
@@ -131,7 +148,7 @@ getPostById()
           <div class="font-weight-bold text-black">Vị trí trên map</div>
           <iframe
             src="https://maps.google.com/maps?q=10.784175535274935,106.62278652191162&hl=vi&z=21&amp;output=embed"
-            width="600" height="450" style="border:0;"
+            width="600" height="450" style="border:0; width: 100%;"
             allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           />
@@ -161,7 +178,7 @@ getPostById()
           </a>
 
           <div class="d-flex mt-4 gap-2">
-            <VBtn class="flex-1-1 text-center" variant="tonal" prepend-icon="tabler-heart">
+            <VBtn class="flex-1-1 text-center" variant="tonal" prepend-icon="tabler-heart" @click="saveFavorite">
               Lưu tin
             </VBtn>
             <VBtn class="flex-1-1 text-center" variant="tonal" prepend-icon="tabler-share">
